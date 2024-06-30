@@ -48,7 +48,7 @@ class TPdf extends CI_Controller
 		number-of-forms = default to 1
 */
 	function dvapp($prefix = 'DVAPP', $count = 1){
-		$start  = 3000;//start
+		$start  = 1;//start
 		$end = $count; //
 		$this->benchmark->mark('code_start');
   		for($i = $start ; $i <= $end ; $i += 24)

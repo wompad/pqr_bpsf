@@ -29,7 +29,7 @@ $prefix = $prefix;
 
 	$linestyle=array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => '10,20,5,10', 'phase' => 10, 'color' => array(255, 0, 0));
 
-	$imgdata = "";
+	$imgdata = "./assets/img/stub.jpg";
 
 	$width = $pdf->getPageWidth() ;
 	$height = $pdf->getPageHeight() ;
@@ -38,7 +38,6 @@ $prefix = $prefix;
 
 
 	$pdf->Line(5, 0, 5, $height);
-
 	$pdf->Line(101, 0, 101, $height);
 	$pdf->Line(196, 0, 196, $height);
 	$pdf->Line(292, 0, 292, $height);
@@ -55,18 +54,16 @@ $prefix = $prefix;
 	$pdf->Line(0, $height - 30  , $width, $height -30 );
 	$pdf->Line(0, $height - 5  , $width, $height -5 );
 
-
-	// $pdf->SetFontSize(11);
-	// $pdf->Image('@'.$imgdata,'','',75,20); #$,''
-	// $pdf->Image('@'.$imgdata, $width/2 + 8,'',75,20);
 	
 	$top = 7;
+	$imgtop = 5;
 	$cur_num = $from;
 
 
 	for($i = 0 ; $i < 8 ; $i++){
 
 			$left = 78;
+			$imgleft = 5;
 			
 			for($j = 0 ; $j < 3 ; $j++){
 
@@ -76,19 +73,25 @@ $prefix = $prefix;
 
 					$code = $prefix.'-'. str_pad($cur_num, 5, "0", STR_PAD_LEFT) . '-'. date('Y');
 
+					$pdf->Image($imgdata,$imgleft,$imgtop,74,25); #$,''
+
 					$pdf->write2DBarcode($code, 'QRCODE,M', $left, $top, 25, 25, $style2, 'N');
-					$pdf->SetFontSize(7);
-					$pdf->Text($left, ($top-1), $code);
+					$pdf->SetFontSize(6);
+					$pdf->Text($left+3, ($top-1), $code);
 
 					$cur_num++;
 
 					$left += 95;
+					$imgleft += 96;
 
 				}
 			}
 
 			$top += 25;
+			$imgtop += 25;
 	}
+
+	
 
 	// $code1 = $prefix.'-'. str_pad($i, 5, "0", STR_PAD_LEFT) . '-'. date('Y');
 	// $code2 = $prefix.'-'. str_pad($i+1, 5, "0", STR_PAD_LEFT) . '-'. date('Y');
