@@ -47,7 +47,7 @@ class TPdf extends CI_Controller
 		PREFIX = Name of city/muni
 		number-of-forms = default to 1
 */
-	function dvapp($prefix = 'DVAPP', $start = 1, $count = 1){
+	function bpsf($prefix = 'BPSF', $start = 1, $count = 1){
 		$start  = $start;//start
 		$end = $count; //
 		$this->benchmark->mark('code_start');
@@ -57,7 +57,6 @@ class TPdf extends CI_Controller
 		$this->benchmark->mark('code_end');
   
 		echo $this->benchmark->elapsed_time('code_start', 'code_end') .' seconds '.PHP_EOL; 
-		 
 	 
 		die();
 	}
