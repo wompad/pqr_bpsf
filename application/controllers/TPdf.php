@@ -20,7 +20,7 @@ class TPdf extends CI_Controller
 		$data['from'] = $from;
 		$data['end'] = $end;
 		$data['prefix'] = $prefix;
-		$data['path'] = "c:/dvapp-forms";
+		$data['path'] = "F:/bpsf-forms";
 		$this->load->view('view_file',$data); 
 	}
 	
@@ -47,8 +47,8 @@ class TPdf extends CI_Controller
 		PREFIX = Name of city/muni
 		number-of-forms = default to 1
 */
-	function dvapp($prefix = 'DVAPP', $count = 1){
-		$start  = 1;//start
+	function dvapp($prefix = 'DVAPP', $start = 1, $count = 1){
+		$start  = $start;//start
 		$end = $count; //
 		$this->benchmark->mark('code_start');
   		for($i = $start ; $i <= $end ; $i += 24)

@@ -39,8 +39,8 @@ $prefix = $prefix;
 
 	$pdf->Line(5, 0, 5, $height);
 	$pdf->Line(101, 0, 101, $height);
-	$pdf->Line(196, 0, 196, $height);
-	$pdf->Line(292, 0, 292, $height);
+	$pdf->Line(197, 0, 197, $height);
+	$pdf->Line(290, 0, 290, $height);
 
 
 
@@ -72,16 +72,17 @@ $prefix = $prefix;
 				}else{
 
 					$code = $prefix.'-'. str_pad($cur_num, 5, "0", STR_PAD_LEFT) . '-'. date('Y');
-
+						
 					$pdf->Image($imgdata,$imgleft,$imgtop,74,25); #$,''
 
 					$pdf->write2DBarcode($code, 'QRCODE,M', $left, $top, 25, 25, $style2, 'N');
 					$pdf->SetFontSize(6);
 					$pdf->Text($left+3, ($top-1), $code);
-
+					
 					$cur_num++;
 
 					$left += 95;
+
 					$imgleft += 96;
 
 				}
@@ -295,7 +296,7 @@ if(is_cli()){
  if (!file_exists($path)) {
     mkdir($path, 0777, true);
 }
-	$pdf->Output($path.'/ConsentForms_'.($cur_num-1).'.pdf', 'F');
+	$pdf->Output($path.'/BPSF-Claim-Stub_'.($from).'-'.($cur_num-1).'.pdf', 'F');
 }else
 	$pdf->Output('', 'I');
 
